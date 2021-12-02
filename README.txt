@@ -16,7 +16,7 @@
 - Para la funcionalidad correcta de este programa se necesita el uso de MySQL y utilizar el script de la base de datos proporcionada en el folder "ScripBasededatos".
 - Preferiblemente utilizar NetBeans como IDE para ejecutar el proyecto correctamente.
 
-4. Link del video presentado el programa.
-
+4. Link del video presentado el programa:
+https://drive.google.com/file/d/1Yj2YtmnQAa-bvQ_UVDvyd4broCTOzkgz/view?usp=sharing
 
 Créditos: Carlos Henriquez 2020-10203
