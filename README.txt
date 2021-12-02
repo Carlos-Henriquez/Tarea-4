@@ -17,6 +17,6 @@
 - Preferiblemente utilizar NetBeans como IDE para ejecutar el proyecto correctamente.
 
 4. Link del video presentado el programa:
-https://drive.google.com/file/d/1Yj2YtmnQAa-bvQ_UVDvyd4broCTOzkgz/view?usp=sharing
+https://youtu.be/lQQOXb8vd0s
 
 Créditos: Carlos Henriquez 2020-10203
