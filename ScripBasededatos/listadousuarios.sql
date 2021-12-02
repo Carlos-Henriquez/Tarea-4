@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2021 a las 03:36:29
+-- Tiempo de generación: 01-12-2021 a las 23:33:20
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.3.33
 
@@ -32,7 +32,7 @@ CREATE TABLE `listadousuarios` (
   `Nombre` varchar(100) NOT NULL,
   `Apellido` varchar(100) NOT NULL,
   `CorreoElectronico` varchar(100) NOT NULL,
-  `Telefono` int(15) NOT NULL,
+  `Telefono` varchar(15) NOT NULL,
   `Contraseña` varchar(100) NOT NULL,
   `ConfirmarContraseña` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,7 +42,19 @@ CREATE TABLE `listadousuarios` (
 --
 
 INSERT INTO `listadousuarios` (`Usuario`, `Nombre`, `Apellido`, `CorreoElectronico`, `Telefono`, `Contraseña`, `ConfirmarContraseña`) VALUES
-('CarlosH', 'Carlos', 'Henriquez', 'CH@gmail.com', 0, '123', '123');
+('Admin', 'Jhonny', 'Test', 'Admin@email.com', '8091010077', '123', '123'),
+('c', 'Carlos', 'Henriquez', 'CH@gmail.com', '18291234568', '123', '123');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `listadousuarios`
+--
+ALTER TABLE `listadousuarios`
+  ADD PRIMARY KEY (`Usuario`),
+  ADD UNIQUE KEY `UQ_LISTADOUSUARIO` (`Usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

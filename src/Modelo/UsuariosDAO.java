@@ -1,3 +1,8 @@
+/**
+ *
+ * @author Carlos Henriquez, matricula: 2020-10203
+ *  
+ */
 package Modelo;
 
 import java.sql.Connection;
@@ -10,11 +15,19 @@ import javax.swing.JOptionPane;
 
 public class UsuariosDAO {
 
+    //Conexion.
+    //'Connection' resumido es 'con'.
     Connection con;
+    //Declaración preparada.
+    //'PreparedStatement' resumido es 'ps'.
     PreparedStatement ps;
+    //Conjunto resultante.
+    //'ResultSet' resumido es 'rs'.
     ResultSet rs;
     Conexion cn = new Conexion();
 
+    //La siguiente funcion es para buscar en cada fila de la base de datos
+    //el conjunto de usuario y contraseña para poder acceder en el login.
     public Usuarios log(String Usuario, String Contraseña) {
         Usuarios user = new Usuarios();
         String sql = "SELECT * FROM listadousuarios WHERE Usuario = ? AND Contraseña = ?";
@@ -39,6 +52,9 @@ public class UsuariosDAO {
         return user;
     }
 
+    //La siguiente función es para que a la hora de registrarse, los datos 
+    //ingresados en los diversos campos se guarden y sean insertados dentro de la
+    //base de datos.
     public boolean Registrarse(Usuarios reg) {
         String sql = "INSERT INTO listadousuarios (Usuario, Nombre, Apellido, CorreoElectronico, Telefono, Contraseña, ConfirmarContraseña) VALUES (?,?,?,?,?,?,?)";
         try {
@@ -66,7 +82,9 @@ public class UsuariosDAO {
         }
     }
 
-    //Solamente en esto se utilizara Alfa
+    //Solamente en esto se utilizara Alfa.
+    //Esta funcion es para tomar la info dentro de la base de datos, comvertirlo
+    //en una lista para posteriormente plazmarlos en el listado de usurios.
     public List<Usuarios> Listado() {
         List<Usuarios> Lista = new ArrayList();
         String sql = "SELECT * FROM listadousuarios";
@@ -90,6 +108,9 @@ public class UsuariosDAO {
         return Lista;
     }
 
+    //Esta funcion toma el usuario seleccionado y luego lo elimina de la base de
+    //datos.
+    //Los '?' son para traer los valores de las variables de las cuales son llamados.
     public boolean EliminarUsuario(String usuario) {
 
         String sql = "DELETE FROM listadousuarios WHERE Usuario = ? ";
@@ -111,6 +132,8 @@ public class UsuariosDAO {
         }
     }
 
+    //La siguiente funcion sirve para hacer la actualizacion de los los datos de
+    //usuario que sea seleccionado.
     public boolean Actualizar(Usuarios reg) {
         String sql = "UPDATE listadousuarios "
                 + "SET Nombre= ? ,  Apellido= ? , CorreoElectronico= ? ,"
@@ -141,8 +164,9 @@ public class UsuariosDAO {
 
         }
     }
-    
-       public Usuarios BuscarPorIdentificador(String Usuario) {
+
+    //Esta funcion identifica los datos del usuario en base a el mismo usuario.
+    public Usuarios BuscarPorIdentificador(String Usuario) {
         Usuarios user = new Usuarios();
         String sql = "SELECT * FROM listadousuarios WHERE Usuario = ? ";
         try {

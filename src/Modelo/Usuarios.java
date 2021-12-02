@@ -1,7 +1,13 @@
+/**
+ *
+ * @author Carlos Henriquez, matricula: 2020-10203
+ *  
+ */
 package Modelo;
 
 public class Usuarios {
-    
+
+    //Se crean cada una de las variables solicitadas en el mandato.
     private String Usuario;
     private String Nombre;
     private String Apellido;
@@ -12,7 +18,7 @@ public class Usuarios {
 
     public Usuarios() {
     }
-   
+
     public Usuarios(String Usuario, String Nombre, String Apellido, String CorreoElectronico, String Telefono, String Contraseña, String ConfirmarContraseña) {
         this.Usuario = Usuario;
         this.Nombre = Nombre;
@@ -23,6 +29,7 @@ public class Usuarios {
         this.ConfirmarContraseña = ConfirmarContraseña;
     }
 
+    //Los getters y los setters de cada una de las variables.
     public String getUsuario() {
         return Usuario;
     }
@@ -78,5 +85,5 @@ public class Usuarios {
     public void setConfirmarContraseña(String ConfirmarContraseña) {
         this.ConfirmarContraseña = ConfirmarContraseña;
     }
-    
+
 }

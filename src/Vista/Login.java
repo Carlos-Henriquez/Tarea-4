@@ -1,48 +1,54 @@
+/**
+ *
+ * @author Carlos Henriquez, matricula: 2020-10203
+ *  
+ */
 package Vista;
 
 import Modelo.Usuarios;
 import Modelo.UsuariosDAO;
 import javax.swing.JOptionPane;
 
-
 public class Login extends javax.swing.JFrame {
+
+    //Los siguientes son los 
     Usuarios lg = new Usuarios();
     UsuariosDAO Login = new UsuariosDAO();
-    
+
     public Login() {
         initComponents();
         //Este comando sirve para poner el cuadro en el centro de la pantalla.
         this.setLocationRelativeTo(null);
-        
+
         //Si en la aplicacion no se logueo
-        setDefaultCloseOperation(javax.swing.
-           WindowConstants.DISPOSE_ON_CLOSE);
-        
-        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
     }
-    
-    public void validar(){
+
+    //Función que valida si la contraseña y el usuario son correctos para iniciar
+    //la sesion.
+    public void validar() {
         String Usuario = txtUsuario.getText();
         String Contraseña = String.valueOf(txtContraseña.getPassword());
-        if (! "".equals(Usuario) || !"".equals(Contraseña)) {
+        if (!"".equals(Usuario) || !"".equals(Contraseña)) {
             lg = Login.log(Usuario, Contraseña);
             if (lg.getUsuario() != null && lg.getContraseña() != null) {
-             
-                
+
                 dispose();
                 this.setVisible(false);
-                
+
                 Listado viewListado = new Listado();
                 viewListado.show();
-                
-                
-            }else{
-                  JOptionPane.showMessageDialog(null, "Debe ingresar su usuario y contraseña, si no está registrado debe registrarse.");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe ingresar su usuario y contraseña, si no está registrado debe registrarse.");
             }
         }
     }
-    
-    private void registrarse(){
+
+    //Funcion la cual hace que inicie la ventana de registrarse.
+    //Esta sera llamada por el boton registrarse.
+    private void registrarse() {
         Registrarse frameRegistro = new Registrarse();
         frameRegistro.show();
     }
@@ -118,17 +124,16 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(txtContraseña))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(153, 153, 153))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(117, 117, 117))))))
+                        .addGap(0, 157, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(153, 153, 153))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(11, 11, 11)))
                 .addGap(127, 127, 127))
         );
         jPanel2Layout.setVerticalGroup(
@@ -184,14 +189,14 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Boton de iniciar sesion.
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         validar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    //Boton de registrarse
+    //Boton de registrarse.
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         registrarse();
-// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

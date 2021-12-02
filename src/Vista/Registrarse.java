@@ -1,34 +1,34 @@
+/**
+ *
+ * @author Carlos Henriquez, matricula: 2020-10203
+ *  
+ */
 package Vista;
 
 import Modelo.Usuarios;
 import Modelo.UsuariosDAO;
-import java.sql.SQLException;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class Registrarse extends javax.swing.JFrame {
 
     private Usuarios user = new Usuarios();
-
     public boolean isUpdating = false;
-
     private UsuariosDAO userDao = new UsuariosDAO();
-
     private String Campos_NoValidos;
 
     public Registrarse() {
         initComponents();
-
         //Este comando sirve para poner el cuadro en el centro de la pantalla.
         this.setLocationRelativeTo(null);
-
         //Metodo para no terminar el proceso explicitamente del programa
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     public Registrarse(Usuarios user) {
         initComponents();
-
+        //Este comando sirve para poner el cuadro en el centro de la pantalla.
+        this.setLocationRelativeTo(null);
         txtUsuario.setText(user.getUsuario());
         txtNombre.setText(user.getNombre());
         txtApellido.setText(user.getApellido());
@@ -37,16 +37,18 @@ public class Registrarse extends javax.swing.JFrame {
         txtContraseña.setText(user.getContraseña());
         txtConfirmarContraseña.setText(user.getConfirmarContraseña());
         isUpdating = true;
+        //Esto es para la hora de que se haga una actualizacion, el boton de
+        //registrarse se cambie el texto a 'actualizar'
         jButton1.setText("Actualizar");
         txtUsuario.setEnabled(false);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
     }
 
+    //Esta funcion sirve para validar cada uno de los campos del registro.
     private boolean ValidarRegistro() {
 
         Campos_NoValidos = "";
+        //Con este if se revisa cada uno de los campos a ver si se encuentran vacios.
         if (!"".equals(txtUsuario.getText())
                 && !"".equals(txtNombre.getText())
                 && !"".equals(txtApellido.getText())
@@ -269,13 +271,13 @@ public class Registrarse extends javax.swing.JFrame {
     //Boton de registarme.
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        //verificacion contraseña
+        //verificacion de que la contraseña y la confirmacion de la contraseña sean iguales.
         if (!(Arrays.equals(txtContraseña.getPassword(), txtConfirmarContraseña.getPassword()))) {
 
-            JOptionPane.showMessageDialog(null, "Las contraseñas nos son iguales");
+            JOptionPane.showMessageDialog(null, "Las contraseñas nos son iguales, verifique y vuelva a intentarlo.");
 
         } else {
-            //Validacion de registro y mencion de espacios vacios
+            //Validacion de registro y mencion de los campos vacios.
             if (ValidarRegistro()) {
 
                 user.setUsuario(txtUsuario.getText());
@@ -289,26 +291,26 @@ public class Registrarse extends javax.swing.JFrame {
                 if (isUpdating) {
 
                     userDao.Actualizar(user);
-                    JOptionPane.showMessageDialog(null, "Se ha actualizado correctamente");
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado correctamente.");
                     dispose();
                     this.setVisible(false);
-                    
-                    Listado vwListado= new Listado();
-                    
+
+                    Listado vwListado = new Listado();
+
                     vwListado.setVisible(true);
                     vwListado.setEnabled(true);
 
                 } else {
 
                     userDao.Registrarse(user);
-                    JOptionPane.showMessageDialog(null, "Se ha registrado correctamente");                    
+                    JOptionPane.showMessageDialog(null, "Se ha registrado correctamente.");
 
                     dispose();
                     this.setVisible(false);
                 }
             } else {
 
-                JOptionPane.showMessageDialog(null, "Erores en los siguientes: " + (Campos_NoValidos == null ? ", " : Campos_NoValidos));
+                JOptionPane.showMessageDialog(null, "Error, todos los campos son obligatorios.\nLlenar los siguientes campos: " + (Campos_NoValidos == null ? ", " : Campos_NoValidos));
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
